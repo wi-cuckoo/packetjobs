@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+  <!--<view  bindtap="bindViewTap" class="userinfo"></view>-->
+  <view class="job-container">
+   <block wx:for="{{job_list}}" wx:for-item="job" wx:key="id">
+      <view class="job-template" bindtap="apply_job" data-job="{{job}}">
+         <view class="job-title">
+            <text>{{ job.name }}</text>
+         </view>
+         <view class="job-footer">
+            <text class="salary">{{ job.salary }}</text>
+            <text> | </text>
+            <text>{{ job.company }}</text>
+            <text> | </text>
+            <text>{{ job.city }}</text>
+         </view>
+      </view>
+   </block>
+  </view>
+</view>

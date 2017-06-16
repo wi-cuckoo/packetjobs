@@ -1,0 +1,31 @@
+{
+   "pages": [
+      "pages/index/index",
+      "pages/law/law",
+      "pages/apply/apply"
+   ],
+   "window": {
+      "backgroundTextStyle": "dark",
+      "navigationBarBackgroundColor": "#0f88eb",
+      "navigationBarTitleText": "PacketJob",
+      "navigationBarTextStyle": "light",
+      "backgroundColor": "#F8F8F8",
+      "enablePullDownRefresh": true
+   },
+   "tabBar": {
+      "backgroundColor": "#0f88eb",
+      "selectedColor": "white",
+      "color": "#f6f7f6",
+      "position": "top",
+      "list": [
+         {
+            "pagePath": "pages/index/index",
+            "text": "首页"
+         },
+         {
+            "pagePath": "pages/law/law",
+            "text": "相关法律"
+         }
+      ]
+   }
+}
