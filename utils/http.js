@@ -13,7 +13,7 @@ const request = (url, {
    })
 }
 
-const get = (url, params) => {
+const get = (url, params = {}) => {
    return new Promise((resolve, reject) => {
       request(url, {
          data: params,
@@ -22,10 +22,10 @@ const get = (url, params) => {
    })
 }
 
-const post = (url, data) => {
+const post = (url, data = {}) => {
    return new Promise((resolve, reject) => {
       request(url, {
-         data: params,
+         data: data,
          method: 'POST',
          success: (data) => resolve(data)
       })

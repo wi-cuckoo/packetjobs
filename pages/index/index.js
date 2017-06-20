@@ -1,13 +1,14 @@
 //index.js
 import { get } from '../../utils/http.js'
+import config from '../../utils/config.js'
 import { 
    store,
    fetch,
    c_keys
 } from '../../utils/cache.js'
-//获取应用实例
+// 获取应用实例
+// const app = getApp()
 
-var app = getApp()
 Page({
   data: {
     motto: 'Find What Jobs You Like',
@@ -37,8 +38,9 @@ Page({
   },
   methods: {
      fetch_job_list(cb) {
-         let url = 'https://wejobs-777f6.firebaseio.com/jobs.json'
-         get(url).then(resp => cb(resp.data))
+         let url = config.DB_URL + '/jobs.json' 
+         let parms = {auth: config.AUTH_KEY}
+         get(url, parms).then(resp => cb(resp.data))
      }
   }
 })

@@ -64,7 +64,7 @@ Page({
         wx.hideLoading()
         wx.showToast({ title: '申请提交成功' })
         wx.navigateBack({})
-     }, 1000)
+     }, 2000)
   },
 
   /**
