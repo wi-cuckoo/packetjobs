@@ -1,6 +1,25 @@
 <!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log" wx:key="*this">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<view class="page law">
+  <view class="page__hd">
+    <view class="page__title">劳动法</view>
+    <view class="page__desc">劳动法是保障劳动者基本权益的法律，以下摘要在工作中十分常见，请认真阅读</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="kind-list">
+      <block wx:for="{{ law_list }}" wx:key="id">
+        <view class="kind-list__item">
+          <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open? 'kind-list__item-hd_show': ''}}" bindtap="kindToggle">
+            <view class="weui-flex__item">{{item.title}}</view>
+          </view>
+          <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+            <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+               <view class="weui-cell weui-cell_access">
+               <text>{{ item.detail }}</text>
+               </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
 </view>
