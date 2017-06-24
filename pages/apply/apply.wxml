@@ -14,7 +14,7 @@
           <view class="weui-label">姓名</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入姓名" />
+          <input class="weui-input" placeholder="请输入姓名" maxlength="10" bindblur="bind_form_input" data-field="name"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
@@ -22,7 +22,7 @@
           <view class="weui-label">年龄</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="number" placeholder="请输入年龄" />
+          <input class="weui-input" type="number" placeholder="请输入年龄" maxlength="2" bindblur="bind_form_input" data-field="age"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
@@ -30,7 +30,7 @@
           <view class="weui-label">电话</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="number" placeholder="请输入电话" />
+          <input class="weui-input" type="number" placeholder="请输入电话" maxlength="11" bindblur="bind_form_input" data-field="phone"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
@@ -38,7 +38,7 @@
           <view class="weui-label">毕业院校</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="number" placeholder="请输入大学名称" />
+          <input class="weui-input" placeholder="请输入大学名称" bindblur="bind_form_input" data-field="university"/>
         </view>
       </view>
     </view>
@@ -47,25 +47,11 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-         <textarea class="weui-textarea" placeholder="请输入简短的自我介绍" style="height: 3em" />
-         <view class="weui-textarea-counter">0/100</view>
+         <textarea class="weui-textarea" placeholder="请输入简短的自我介绍" style="height: 3em" maxlength="100" bindinput="bind_form_input" data-field="intro"/>
+         <view class="weui-textarea-counter">{{intro_len}}/100</view>
         </view>
       </view>
     </view>
-
-    <checkbox-group bindchange="bindAgreeChange">
-      <label class="weui-agree" for="weuiAgree">
-        <view class="weui-agree__text">
-          <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{agree}}" />
-          <view class="weui-agree__checkbox-icon">
-            <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
-          </view>
-          阅读并同意《相关条款》
-          <!--<navigator url="" class="weui-agree__link"></navigator>-->
-        </view>
-      </label>
-    </checkbox-group>
-
     <view class="weui-btn-area">
       <button class="weui-btn" type="primary" bindtap="apply">申请</button>
     </view>

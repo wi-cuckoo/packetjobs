@@ -1,8 +1,10 @@
 // apply.js
+import { post } from '../../utils/http.js'
+import config from '../../utils/config.js'
 import {
-   store,
-   fetch,
-   c_keys
+  store,
+  fetch,
+  c_keys
 } from '../../utils/cache.js'
 
 Page({
@@ -11,66 +13,59 @@ Page({
    * 页面的初始数据
    */
   data: {
-      job: {},
-      agree: false,
-      invalid: false
+    job: {},
+    agree: false,
+    invalid: false,
+    candidate: {
+      name: '',
+      age: null,
+      phone: '',
+      university: '',
+      intro: ''
+    },
+    intro_len: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (route) {
-     let cache_job = fetch(c_keys.jobs)
-     let seek_job = cache_job.find( el => el.id == route.id)
-     wx.setNavigationBarTitle({title: '申请职位'})
-     this.setData({ job: seek_job })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+    let cache_job = fetch(c_keys.jobs)
+    let seek_job = cache_job.find(el => el.id == route.id)
+    wx.setNavigationBarTitle({ title: '申请职位' })
+    this.setData({ job: seek_job })
   },
 
   /**
    * 页面相关事件处理函数--
    */
   apply: function () {
-     wx.showLoading({ title: '正在提交，稍等' })
-
-     setTimeout(() => {
-        wx.hideLoading()
-        wx.showToast({ title: '申请提交成功' })
+    let jump_annimotion = () => {
+      wx.showToast({ title: '申请提交成功' })
+      setTimeout(() => {
         wx.navigateBack({})
-     }, 2000)
+      }, 1000)
+    }
+    wx.showLoading({ title: '正在提交，稍等' })
+    let data = this.data.candidate
+    data.job = this.data.job.name
+    let url = config.DB_URL + '/candidates.json?auth=' + config.AUTH_KEY
+    post(url, data).then(resp => {
+      console.log(resp)
+      wx.hideLoading()
+      jump_annimotion()
+    })
+    
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  bind_form_input: function (e) {
+    let {detail, target} = e
+    let field = target.dataset.field
+    let value = detail.value
+    // this.data.candidate.name = value
+    if (field === 'intro') {
+      this.setData({ intro_len: value.length })
+    }
+    this.data.candidate[field] = value
   }
 })

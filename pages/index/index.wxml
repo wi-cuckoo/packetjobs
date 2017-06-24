@@ -16,5 +16,12 @@
         </block>
       </view>
     </view>
+    <view class="weui-footer weui-footer_fixed-bottom">
+        <view class="weui-footer__links" wx:if="{{ admin }}">
+            <navigator url="" class="weui-footer__link">发布职位</navigator>
+            <navigator url="" class="weui-footer__link">查看投递</navigator>
+        </view>
+        <view class="weui-footer__text">Copyright © 2017 PacketJob</view>
+    </view>
   </view>
 </view>

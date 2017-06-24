@@ -6,12 +6,14 @@ const store = (key, val) => {
 }
 
 const fetch = (key) => {
-   return wx.getStorageSync(key)
+   return wx.getStorageSync(key) || null
 }
 
 const c_keys = {
    jobs: 'jobs',
-   applys: 'applys'
+   applys: 'applys',
+   user: 'user',
+   role: 'role'
 }
 
 export { store, fetch, c_keys }

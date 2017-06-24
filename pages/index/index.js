@@ -12,12 +12,18 @@ import {
 Page({
   data: {
     motto: 'Find What Jobs You Like',
-    userInfo: {},
+    admin: false,
     job_list: []
   },
   onLoad: function () {
-    console.log('onLoad')
-    this.get_newest_job()    
+    let timer = setInterval( () => {
+      let user = fetch(c_keys.user)
+      if (user !== null) {
+        clearInterval(timer)
+        this.set_admin(user.nickName)
+      }
+    }, 20)
+    this.get_newest_job()
   },
   onPullDownRefresh: function () {
      this.get_newest_job(true)
@@ -36,11 +42,30 @@ Page({
         url: `/pages/apply/apply?id=${job.id}`
      })
   },
+  set_admin: function (name) {
+    let role = fetch(c_keys.role)
+    if (role !== null) {
+      this.setData({ admin: role })
+      return false;
+    }
+    this.methods.is_admin(name, result => {
+      this.setData({ admin: result })
+      store(c_keys.role, result)
+    })
+  },
   methods: {
      fetch_job_list(cb) {
          let url = config.DB_URL + '/jobs.json' 
-         let parms = {auth: config.AUTH_KEY}
-         get(url, parms).then(resp => cb(resp.data))
+         let params = {auth: config.AUTH_KEY}
+         get(url, params).then(resp => cb(resp.data))
+     },
+
+     is_admin (name, cb) {
+       let url = config.DB_URL + `/roles/${name}.json`
+       let params = { auth: config.AUTH_KEY }
+       get(url, params).then( resp => {
+         cb(resp.data === 'admin')
+       })
      }
   }
 })

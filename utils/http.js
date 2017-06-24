@@ -7,6 +7,7 @@ const request = (url, {
    wx.request({
       url: url,
       data: data,
+      method: method,
       header: { 'content-type': 'application/json' },
       success: (res) => { success(res) },
       fail: fail
@@ -32,4 +33,14 @@ const post = (url, data = {}) => {
    })
 }
 
-export { get, post}
+const put = (url, data = {}) => {
+  return new Promise((resolve, reject) => {
+    request(url, {
+      data: data,
+      method: 'PUT',
+      success: (data) => resolve(data)
+    })
+  })
+}
+
+export { get, post, put}
