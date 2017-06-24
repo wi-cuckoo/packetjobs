@@ -3,25 +3,27 @@
   <view class="page__bd">
     <view class="weui-panel">
       <view class="weui-panel__bd">
-         <block wx:for="{{job_list}}" wx:for-item="job" wx:key="id">
-        <view class="weui-media-box weui-media-box_text" bindtap="apply_job" data-job="{{job}}">
-          <view class="weui-media-box__title weui-media-box__title_in-text">{{ job.name }}</view>
-          <!--<view class="weui-media-box__desc"></view>-->
-          <view class="weui-media-box__info">
-            <view class="weui-media-box__info__meta salary">{{ job.salary }}</view>
-            <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{ job.company }}</view>
-            <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{ job.city }}</view>
+        <block wx:for="{{job_list}}" wx:for-item="job" wx:key="id">
+          <view class="weui-media-box weui-media-box_text" bindtap="apply_job" data-job="{{job}}">
+            <view class="weui-media-box__title weui-media-box__title_in-text">{{ job.name }}</view>
+            <!--<view class="weui-media-box__desc"></view>-->
+            <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta salary">{{ job.salary }}</view>
+              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{ job.company }}</view>
+              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{ job.city }}</view>
+            </view>
           </view>
-        </view>
         </block>
       </view>
     </view>
     <view class="weui-footer weui-footer_fixed-bottom">
-        <view class="weui-footer__links" wx:if="{{ admin }}">
-            <navigator url="" class="weui-footer__link">发布职位</navigator>
-            <navigator url="" class="weui-footer__link">查看投递</navigator>
+      <block wx:if="{{admin}}">
+        <view class="weui-footer__links">
+            <navigator url="/pages/release/release" class="weui-footer__link ">发布职位</navigator>
+            <navigator url="/pages/candidate/candidate" class="weui-footer__link ">查看投递</navigator>
         </view>
-        <view class="weui-footer__text">Copyright © 2017 PacketJob</view>
+      </block>
+        <view class="weui-footer__text ">Copyright © 2017 PacketJob</view>
     </view>
   </view>
 </view>

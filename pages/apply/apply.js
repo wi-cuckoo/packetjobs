@@ -40,6 +40,14 @@ Page({
    * 页面相关事件处理函数--
    */
   apply: function () {
+    let is_valid = this.validate_form()
+    if (!is_valid) {
+      this.setData({invalid: !is_valid})
+      setTimeout( () => {
+        this.setData({invalid: false})
+      }, 2000)
+      return
+    }
     let jump_annimotion = () => {
       wx.showToast({ title: '申请提交成功' })
       setTimeout(() => {
@@ -67,5 +75,15 @@ Page({
       this.setData({ intro_len: value.length })
     }
     this.data.candidate[field] = value
+  },
+
+  validate_form: function () {
+    let {name,
+          age,
+          phone,
+          university,
+          intro
+        } = this.data.candidate
+    return name && age && phone && university && intro
   }
 })

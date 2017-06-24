@@ -1,30 +1,32 @@
 {
-   "pages": [
-      "pages/index/index",
-      "pages/law/law",
-      "pages/apply/apply"
-   ],
-   "window": {
-      "backgroundTextStyle": "dark",
-      "navigationBarBackgroundColor": "#0f88eb",
-      "navigationBarTitleText": "PacketJob",
-      "navigationBarTextStyle": "light",
-      "backgroundColor": "#F8F8F8"
-   },
-   "tabBar": {
-      "backgroundColor": "#0f88eb",
-      "selectedColor": "white",
-      "color": "#f6f7f6",
-      "position": "top",
-      "list": [
-         {
-            "pagePath": "pages/index/index",
-            "text": "最新发布"
-         },
-         {
-            "pagePath": "pages/law/law",
-            "text": "法律摘要"
-         }
-      ]
-   }
+  "pages": [
+    "pages/index/index",
+    "pages/law/law",
+    "pages/apply/apply",
+    "pages/candidate/candidate",
+    "pages/release/release"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0f88eb",
+    "navigationBarTitleText": "PacketJob",
+    "navigationBarTextStyle": "light",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "backgroundColor": "#0f88eb",
+    "selectedColor": "white",
+    "color": "#f6f7f6",
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "最新职位"
+      },
+      {
+        "pagePath": "pages/law/law",
+        "text": "法律摘要"
+      }
+    ]
+  }
 }

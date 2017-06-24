@@ -5,7 +5,7 @@
     <view class="page__desc">{{ job.desc }}</view>
   </view>
   <view class="page__bd apply-form">
-    <view class="weui-toptips weui-toptips_warn" wx:if="{{ invalid }}">错误提示</view>
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{ invalid }}">信息未填写完整</view>
 
     <view class="weui-cells__title">基本信息</view>
     <view class="weui-cells weui-cells_after-title">

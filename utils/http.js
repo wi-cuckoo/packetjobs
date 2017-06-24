@@ -4,6 +4,7 @@ const request = (url, {
    success = (data) => {},
    fail = (err) => {wx.showToast({ title: '网络错误' })}
 } = {}) => {
+  console.log(method, '\t', url)
    wx.request({
       url: url,
       data: data,

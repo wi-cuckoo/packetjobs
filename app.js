@@ -3,13 +3,18 @@ import { put } from './utils/http.js'
 import config from './utils/config.js'
 import {
   store,
+  fetch,
   c_keys
 } from './utils/cache.js'
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     wx.checkSession({
-      fail: this.login
+      complete: () => {
+        if (fetch(c_keys.user) === null) {
+          this.login()
+        }
+      }
     })
   },
   login () {

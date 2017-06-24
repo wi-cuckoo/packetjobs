@@ -1,0 +1,60 @@
+<!--apply.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__hd">
+    <view class="page__title">新职位发布</view>
+    <view class="page__desc">此页面专供管理员发布职位所用，普通用户不可见，放心使用，无毒无害</view>
+  </view>
+  <view class="page__bd apply-form">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{ invalid }}">信息未填写完整</view>
+
+    <view class="weui-cells__title">填写职位信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">职位名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入职位名" maxlength="10" bindblur="bind_form_input" data-field="name"/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">薪资</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入薪资范围"bindblur="bind_form_input" data-field="salary"/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">公司</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入公司" maxlength="2" bindblur="bind_form_input" data-field="company"/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">工作地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入城市名" bindblur="bind_form_input" data-field="city"/>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">职位描述</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+         <textarea class="weui-textarea" placeholder="如学历、专业及工作经验等" style="height: 3em" maxlength="100" bindinput="bind_form_input" data-field="desc"/>
+         <view class="weui-textarea-counter">{{desc_len}}/100</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="release">发布</button>
+    </view>
+  </view>
+</view>
