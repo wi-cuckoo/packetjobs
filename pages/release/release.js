@@ -49,7 +49,6 @@ Page({
     data.time = new Date().getTime()
     let url = config.DB_URL + '/jobs.json?auth=' + config.AUTH_KEY
     post(url, data).then(resp => {
-      console.log(resp)
       wx.hideLoading()
       jump_annimotion()
     })

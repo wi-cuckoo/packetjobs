@@ -59,7 +59,6 @@ Page({
     data.job = this.data.job.name
     let url = config.DB_URL + '/candidates.json?auth=' + config.AUTH_KEY
     post(url, data).then(resp => {
-      console.log(resp)
       wx.hideLoading()
       jump_annimotion()
     })

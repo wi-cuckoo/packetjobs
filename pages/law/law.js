@@ -9,7 +9,6 @@ Page({
       this.setData({law_list: laws})
    },
    kindToggle: function (e) {
-      console.log('tapped')
       let id = e.currentTarget.id, list = this.data.law_list;
       for (let i = 0, len = list.length; i < len; ++i) {
          if (list[i].id == id) {

@@ -1,66 +1,53 @@
 // candidate.js
+import { get } from '../../utils/http.js'
+import config from '../../utils/config.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    candidate_list: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+    this.get_newest_candidate()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+    
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.get_newest_candidate(true)
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  get_newest_candidate: function (fresh = false) {
+    fresh || wx.showLoading({ title: '正在拼老命加载' })
+    this.fetch_candidate_list(candidates => {
+      fresh || wx.hideLoading()
+      let tmp = Object.keys(candidates).map(el => {
+        candidates[el].id = el
+        return candidates[el]
+      })
+      this.setData({ candidate_list: tmp.reverse() })
+      fresh && wx.stopPullDownRefresh()
+    })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  fetch_candidate_list (cb) {
+    let url = config.DB_URL + '/candidates.json'
+    let params = { auth: config.AUTH_KEY }
+    get(url, params).then(resp => cb(resp.data))
   }
 })

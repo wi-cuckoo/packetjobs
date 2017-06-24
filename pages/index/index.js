@@ -16,9 +16,10 @@ Page({
     job_list: []
   },
   onLoad: function () {
+    let loop_max = 10
     let timer = setInterval(() => {
       let user = fetch(c_keys.user)
-      if (user !== null) {
+      if (user !== null && --loop_max > 0) {
         clearInterval(timer)
         this.set_admin(user.nickName)
       }

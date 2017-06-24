@@ -6,7 +6,6 @@ const store = (key, val) => {
 }
 
 const fetch = (key) => {
-  console.log(wx.getStorageSync(key))
    return wx.getStorageSync(key) || null
 }
 

@@ -30,7 +30,7 @@
           <view class="weui-label">公司</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入公司" maxlength="2" bindblur="bind_form_input" data-field="company"/>
+          <input class="weui-input" placeholder="请输入公司" bindblur="bind_form_input" data-field="company"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
