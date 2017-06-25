@@ -1,7 +1,7 @@
 <view class="page">
   <view class="page__hd">
     <view class="page__title">新投递</view>
-    <view class="page__desc">你有新的消息，请注意查收！！</view>
+    <view class="page__desc">你有新的消息，请注意查收！！！</view>
   </view>
   <view class="page__bd page__bd_spacing">
 

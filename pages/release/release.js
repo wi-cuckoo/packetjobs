@@ -42,7 +42,7 @@ Page({
       wx.showToast({ title: '职位发布成功' })
       setTimeout(() => {
         wx.navigateBack({})
-      }, 1000)
+      }, 500)
     }
     wx.showLoading({ title: '正在发布，稍等' })
     let data = this.data.new_job
