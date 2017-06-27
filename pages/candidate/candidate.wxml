@@ -5,8 +5,7 @@
     <view class="page__title">新投递</view>
     <view class="page__desc">你有新的消息，请注意查收！！！</view>
   </view>
-  <view class="page__bd page__bd_spacing">
-
+  <view class="page__bd">
     <view class="weui-panel">
       <view class="weui-panel__bd">
         <block wx:for="{{candidate_list}}" wx:for-item="candy" wx:key="id">

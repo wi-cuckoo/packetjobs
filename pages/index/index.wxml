@@ -16,7 +16,7 @@
         </block>
       </view>
     </view>
-    <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer weui-footer_fixed-bottom gray-bg">
       <block wx:if="{{admin}}">
         <view class="weui-footer__links">
             <navigator url="/pages/release/release" class="weui-footer__link ">发布职位</navigator>
