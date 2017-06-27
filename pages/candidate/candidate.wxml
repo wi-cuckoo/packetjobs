@@ -21,6 +21,5 @@
         </block>
       </view>
     </view>
-  </view>  
-  <template is="footer" />
+  </view>
 </view>
