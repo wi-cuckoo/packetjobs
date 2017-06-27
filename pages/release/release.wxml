@@ -1,4 +1,6 @@
 <!--apply.wxml-->
+<import src="../../assets/template/footer.wxml" />
+
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
   <view class="page__hd">
     <view class="page__title">新职位发布</view>
@@ -57,4 +59,5 @@
       <button class="weui-btn" type="primary" bindtap="release">发布</button>
     </view>
   </view>
+  <template is="footer" />
 </view>

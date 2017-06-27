@@ -1,5 +1,5 @@
 //index.js
-import { get } from '../../utils/http.js'
+import { get, del } from '../../utils/http.js'
 import config from '../../utils/config.js'
 import {
   store,
@@ -43,9 +43,25 @@ Page({
     })
   },
   apply_job: function (event) {
+    if (this.longtap_lock){
+      this.longtap_lock = false
+      return
+    }
     let {job} = event.currentTarget.dataset
     wx.navigateTo({
       url: `/pages/apply/apply?id=${job.id}`
+    })
+  },
+  delete_job: function (event) {
+    if(!this.data.admin) return
+    this.longtap_lock = true
+    let { job } = event.currentTarget.dataset
+    wx.showModal({
+      title: '下架该岗位',
+      content: '确认将会删除该岗位，请谨慎操作',
+      success: res => {
+        res.confirm && this.methods.remove_job(job.id).then(() => this.get_newest_job(true))
+      }
     })
   },
   set_admin: function (name) {
@@ -63,7 +79,7 @@ Page({
     fetch_job_list(cb) {
       let url = config.DB_URL + '/jobs.json'
       let params = { auth: config.AUTH_KEY }
-      get(url, params).then(resp => cb(resp.data))
+      get(url, params).then(resp => cb(resp.data || {}))
     },
 
     is_admin(name, cb) {
@@ -72,6 +88,12 @@ Page({
       get(url, params).then(resp => {
         cb(resp.data === 'admin')
       })
+    },
+
+    remove_job(id) {
+      let url = config.DB_URL + `/jobs/${id}.json?auth=${config.AUTH_KEY}`
+      return del(url)
     }
-  }
+  },
+  longtap_lock: false
 })

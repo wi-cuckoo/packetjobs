@@ -1,4 +1,6 @@
 <!--logs.wxml-->
+<import src="../../assets/template/footer.wxml" />
+
 <view class="page law">
   <view class="page__hd">
     <view class="page__title">劳动法</view>
@@ -22,4 +24,5 @@
       </block>
     </view>
   </view>
+  <template is="footer" />
 </view>

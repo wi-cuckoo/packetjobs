@@ -48,6 +48,6 @@ Page({
   fetch_candidate_list (cb) {
     let url = config.DB_URL + '/candidates.json'
     let params = { auth: config.AUTH_KEY }
-    get(url, params).then(resp => cb(resp.data))
+    get(url, params).then(resp => cb(resp.data || {}))
   }
 })

@@ -1,4 +1,6 @@
 <!--apply.wxml-->
+<import src="../../assets/template/footer.wxml" />
+
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
   <view class="page__hd">
     <view class="page__title">{{ job.name }}</view>
@@ -55,5 +57,6 @@
     <view class="weui-btn-area">
       <button class="weui-btn" type="primary" bindtap="apply">申请</button>
     </view>
-  </view>
+  </view>  
+  <template is="footer" />
 </view>

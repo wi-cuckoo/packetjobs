@@ -1,3 +1,5 @@
+<import src="../../assets/template/footer.wxml" />
+
 <view class="page">
   <view class="page__hd">
     <view class="page__title">新投递</view>
@@ -20,8 +22,6 @@
         </block>
       </view>
     </view>
-  </view>
-  <view class="weui-footer weui-footer_fixed-bottom">
-        <view class="weui-footer__text ">Copyright © 2017 PacketJob</view>
-  </view>
+  </view>  
+  <template is="footer" />
 </view>

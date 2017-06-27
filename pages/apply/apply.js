@@ -52,7 +52,7 @@ Page({
       wx.showToast({ title: '申请提交成功' })
       setTimeout(() => {
         wx.navigateBack({})
-      }, 1000)
+      }, 500)
     }
     wx.showLoading({ title: '正在提交，稍等' })
     let data = this.data.candidate

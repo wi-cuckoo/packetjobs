@@ -44,4 +44,14 @@ const put = (url, data = {}) => {
   })
 }
 
-export { get, post, put}
+const del = (url, data = {}) => {
+  return new Promise((resolve, reject) => {
+    request(url, {
+      data: data,
+      method: 'DELETE',
+      success: (data) => resolve(data)
+    })
+  })
+}
+
+export { get, post, put, del}
